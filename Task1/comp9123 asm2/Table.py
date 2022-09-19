@@ -1,12 +1,12 @@
 class Table:
-    def __init__(self, hobbits: int, elfs: int, dwarfs: int, humans: int, distance: int):
+    def __init__(self, distance: int):
         self.capacity = 7
         self.distance = distance
-        self.hobbits = hobbits
-        self.elfs = elfs
-        self.dwarfs = dwarfs
-        self.humans = humans
-        self.num_on_table = self.hobbits + self.humans + self.elfs + self.dwarfs
+        self.hobbits = 0
+        self.elves = 0
+        self.dwarves = 0
+        self.humans = 0
+        self.num_on_table = self.hobbits + self.humans + self.elves + self.dwarves
 
     def is_table_full(self):
         """
@@ -24,7 +24,7 @@ class Table:
         There must be at least one elf at the table to be considered elves-only.
         :return: True if the table is only elves, False otherwise.
         """
-        if self.hobbits == 0 and self.humans == 0 and self.dwarfs == 0 and self.elfs > 0:
+        if self.hobbits == 0 and self.humans == 0 and self.dwarves == 0 and self.elves > 0:
             return True
         else:
             return False
@@ -36,9 +36,9 @@ class Table:
         dwarf-only, hobbit-only, or elf-only.
         :return: True if the table is made up of only dwarves, only hobbits, or only elves.
         """
-        if self.hobbits > 0 and self.elfs == 0 and self.humans == 0 and self.dwarfs == 0:
+        if self.hobbits > 0 and self.elves == 0 and self.humans == 0 and self.dwarves == 0:
             return True
-        elif self.dwarfs > 0 and self.humans == 0 and self.elfs == 0 and self.hobbits == 0:
+        elif self.dwarves > 0 and self.humans == 0 and self.elves == 0 and self.hobbits == 0:
             return True
         elif self.is_elves_only() is True:
             return True
@@ -55,7 +55,7 @@ class Table:
         Returns the number of elves at the table.
         :return: The number of elves at the table.
         """
-        return self.elfs
+        return self.elves
 
     def get_distance(self):
         """
@@ -79,7 +79,7 @@ class Table:
         If the table is already full, this function should do nothing.
         """
         if self.num_on_table < self.capacity:
-            self.dwarfs += 1
+            self.dwarves += 1
             self.num_on_table += 1
 
     def add_elf(self):
@@ -88,7 +88,7 @@ class Table:
         If the table is already full, this function should do nothing.
         """
         if self.num_on_table < self.capacity:
-            self.elfs += 1
+            self.elves += 1
             self.num_on_table += 1
 
     def add_human(self):
